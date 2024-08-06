@@ -14,6 +14,7 @@ export const Container = styled(TouchableOpacity)<Props>`
   height: 120px;
 
   margin-top: 25px;
+  margin-bottom: 40px;
 
   justify-content: center;
   align-items: center;
@@ -31,7 +32,8 @@ export const Title = styled.Text`
 
 export const Details = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
-  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+  color: ${({ theme }) => theme.COLORS.GRAY_500};
 `;
 
 export const Icon = styled(ArrowUpRight).attrs<Props>(({ theme, type }) => ({
