@@ -71,6 +71,5 @@ export const CardContainer = styled.View`
   gap: 12px;
   width: 48.5%;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
 `;
