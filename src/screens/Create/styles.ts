@@ -49,3 +49,15 @@ export const CardViewInput = styled.View`
   flex-direction: row;
   width: 48.5%;
 `;
+
+export const ViewButton = styled.View`
+  flex-direction: row;
+  gap: 12px;
+`;
+
+export const ViewDone = styled.View`
+  width: 100%;
+  margin-top: auto; /* Empurra o botão para o final do container */
+  padding-top: 16px; /* Espaçamento superior para separar o botão dos campos acima */
+  padding-bottom: 16px; /* Espaçamento inferior para evitar que o botão fique colado na borda da tela */
+`;
