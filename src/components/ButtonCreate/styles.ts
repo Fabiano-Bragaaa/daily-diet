@@ -1,8 +1,14 @@
 import { TouchableOpacity } from "react-native";
 import styled, { css } from "styled-components/native";
 
-export const Container = styled(TouchableOpacity)`
-  width: 100%;
+export type ButtonWidhtPropsStyle = "PRIMARY" | "SECONDARY";
+
+type Props = {
+  type: ButtonWidhtPropsStyle;
+};
+
+export const Container = styled(TouchableOpacity)<Props>`
+  width: ${({ type }) => (type === "PRIMARY" ? "100%" : "60%")};
   height: 60px;
 
   justify-content: center;

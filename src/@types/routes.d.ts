@@ -3,6 +3,8 @@ export declare global {
     interface RootParamList {
       Home: undefined;
       Create: undefined;
+      FinishCreate: undefined;
+      FinishCreateNo: undefined;
       Details: {
         percentage: string;
       };
