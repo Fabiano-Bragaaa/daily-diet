@@ -8,9 +8,9 @@ type Props = TextInputProps & {
 
 export function Input({ title, type = "MEDIUM", ...rest }: Props) {
   return (
-    <Container {...rest}>
+    <Container>
       <Title> {title} </Title>
-      <InputCreate type={type} />
+      <InputCreate type={type} {...rest} />
     </Container>
   );
 }

@@ -47,7 +47,7 @@ export const SubContainer = styled.View`
 export const CardViewInput = styled.View`
   gap: 12px;
   flex-direction: row;
-  width: 48.5%;
+  width: 48%;
 `;
 
 export const ViewButton = styled.View`
@@ -55,7 +55,7 @@ export const ViewButton = styled.View`
   gap: 12px;
 `;
 
-export const ViewDone = styled.View`
+export const ViewDone = styled.TouchableOpacity`
   width: 100%;
   margin-top: auto; /* Empurra o botão para o final do container */
   padding-top: 16px; /* Espaçamento superior para separar o botão dos campos acima */

@@ -1,5 +1,4 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { Text, TouchableOpacity, View } from "react-native";
 import {
   Container,
   SubContainer,
