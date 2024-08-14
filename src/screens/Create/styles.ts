@@ -41,6 +41,8 @@ export const SubContainer = styled.View`
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
 
+  justify-content: center;
+
   padding: 24px;
 `;
 

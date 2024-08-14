@@ -65,6 +65,10 @@ export function Home() {
     navigation.navigate("Create");
   }
 
+  function handleFoodDetails(meal: Meal) {
+    navigation.navigate("MealDetails", { meal });
+  }
+
   useFocusEffect(
     useCallback(() => {
       foodsList();
@@ -80,10 +84,15 @@ export function Home() {
       <TitleNew>Refeições</TitleNew>
       <ButtonCreate title="Nova refeição" onPress={handleCreate} />
       <SectionList
-        sections={section}
+        sections={section.reverse()}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <ListFood date={item.time} food={item.name} type={item.inDiet} />
+          <ListFood
+            date={item.time}
+            food={item.name}
+            type={item.inDiet}
+            onPress={() => handleFoodDetails(item)}
+          />
         )}
         renderSectionHeader={({ section }) => <Title>{section.title}</Title>}
         showsVerticalScrollIndicator={false}
