@@ -18,17 +18,24 @@ import {
 
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { PencilSimpleLine, Trash } from "phosphor-react-native";
+import { Meal } from "../../storage/Food/foodGetAll";
 
-type RouteParams = RouteProp<ReactNavigation.RootParamList, "MealDetails">;
+type RouteParams = {
+  meal: Meal;
+};
 
 export function MealDetail() {
   const navigation = useNavigation();
 
-  const route = useRoute<RouteParams>();
-  const { meal } = route.params;
+  const route = useRoute();
+  const { meal } = route.params as RouteParams;
 
   function handleGoBack() {
     navigation.goBack();
+  }
+
+  function handleGoEditMeal() {
+    navigation.navigate("MealEdit", { meal });
   }
 
   return (
@@ -52,13 +59,13 @@ export function MealDetail() {
           </DietText>
         </ViewDiet>
         <ViewDone>
-          <ButtonCreate type>
+          <ButtonCreate type onPress={handleGoEditMeal}>
             <PencilSimpleLine color="#fff" size={20} />
             <TitleButton type>Editar refeição</TitleButton>
           </ButtonCreate>
           <ButtonCreate type={false}>
             <Trash color="#000" size={20} />
-            <TitleButton type={false}>Editar refeição</TitleButton>
+            <TitleButton type={false}>Excluir refeição</TitleButton>
           </ButtonCreate>
         </ViewDone>
       </SubContainerEdition>
