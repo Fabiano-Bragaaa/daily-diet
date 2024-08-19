@@ -71,9 +71,7 @@ export function Home() {
 
   useFocusEffect(
     useCallback(() => {
-      foodsList();
-
-      console.log(foods);
+      foodsList(); // Recarrega a lista de refeições
     }, [])
   );
 
