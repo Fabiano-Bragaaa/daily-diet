@@ -2,10 +2,13 @@ import { TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styled, { css } from "styled-components/native";
 
+type WidthButtonStyleProps = boolean;
+
 export type ViewStyleProps = boolean;
 
 type Props = {
   type: ViewStyleProps;
+  large?: WidthButtonStyleProps;
 };
 
 export const Container = styled(SafeAreaView)<Props>`
@@ -109,7 +112,7 @@ export const ViewDone = styled.View`
 `;
 
 export const ButtonCreate = styled(TouchableOpacity)<Props>`
-  width: 100%;
+  width: ${({ large }) => (large ? "100%" : "49%")};
   height: 60px;
 
   gap: 10px;
@@ -134,5 +137,38 @@ export const TitleButton = styled.Text<Props>`
     font-size: ${theme.FONT_SIZE.MD}px;
     font-family: ${theme.FONT_FAMILY.BOLD};
     color: ${type ? theme.COLORS.WHITE : theme.COLORS.GRAY_600};
+  `}
+`;
+
+export const ModalContainer = styled(SafeAreaView)`
+  background-color: rgba(34, 34, 34, 0.4);
+  flex: 1;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px;
+`;
+
+export const ViewContent = styled.View`
+  background-color: ${({ theme }) => theme.COLORS.WHITE};
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px;
+
+  height: 30%;
+  width: 90%;
+
+  border-radius: 10px;
+`;
+
+export const TitleContent = styled.Text`
+  text-align: center;
+  margin-bottom: 30px;
+  ${({ theme }) => css`
+    font-size: ${theme.FONT_SIZE.LG}px;
+    font-family: ${theme.FONT_FAMILY.BOLD};
+    color: ${theme.COLORS.GRAY_700};
   `}
 `;
