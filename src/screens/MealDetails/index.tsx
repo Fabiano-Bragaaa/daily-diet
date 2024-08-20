@@ -19,6 +19,7 @@ import {
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { PencilSimpleLine, Trash } from "phosphor-react-native";
 import { Meal } from "../../storage/Food/foodGetAll";
+import { FoodDelete } from "../../storage/Food/foodDelete";
 
 type RouteParams = {
   meal: Meal;
@@ -36,6 +37,15 @@ export function MealDetail() {
 
   function handleGoEditMeal() {
     navigation.navigate("MealEdit", { meal });
+  }
+
+  async function handleDeleteFood() {
+    try {
+      await FoodDelete(meal.id);
+      navigation.navigate("Home");
+    } catch (err) {
+      console.log("erro ao deletar a comida", err);
+    }
   }
 
   return (
@@ -63,7 +73,7 @@ export function MealDetail() {
             <PencilSimpleLine color="#fff" size={20} />
             <TitleButton type>Editar refeição</TitleButton>
           </ButtonCreate>
-          <ButtonCreate type={false}>
+          <ButtonCreate type={false} onPress={handleDeleteFood}>
             <Trash color="#000" size={20} />
             <TitleButton type={false}>Excluir refeição</TitleButton>
           </ButtonCreate>
