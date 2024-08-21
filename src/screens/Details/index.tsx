@@ -6,7 +6,6 @@ import {
   Percentage,
   PercentView,
   Icon,
-  IconButtonStyleProps,
   ButtonIcon,
   Statistics,
   ViewCardRow,
@@ -14,37 +13,48 @@ import {
 } from "./styles";
 import { Card } from "../../components/Card";
 
-type PercentageProps = {
-  percentage: string;
+type DetailsProps = {
+  percentage: number;
+  maxSequence: number;
+  totalMeals: number;
+  inDietMeals: number;
+  outOfDietMeals: number;
 };
 
-type Props = {
-  type?: IconButtonStyleProps;
-};
-
-export function Details({ type = "PRIMARY" }: Props) {
+export function Details() {
   const navigation = useNavigation();
   const route = useRoute();
-  const { percentage } = route.params as PercentageProps;
+  const { percentage, inDietMeals, maxSequence, outOfDietMeals, totalMeals } =
+    route.params as DetailsProps;
+
+  const iconType = percentage < 50 ? "SECONDARY" : "PRIMARY";
+
   return (
-    <Container>
-      <PercentView>
+    <Container type={iconType}>
+      <PercentView type={iconType}>
         <ButtonIcon onPress={() => navigation.navigate("Home")}>
-          <Icon type={type} />
+          <Icon type={iconType} />
         </ButtonIcon>
-        <Percentage>{percentage}</Percentage>
+        <Percentage>{`${percentage.toFixed(0)}%`}</Percentage>
         <DetailsText>Dentro das refeições da dieta</DetailsText>
       </PercentView>
 
       <SubContainer>
         <Statistics>Estatísticas gerais</Statistics>
-        <Card title="22" details="melhor sequência de pratos dentro da dieta" />
-        <Card title="18" details="refeições registradas" />
+        <Card
+          title={maxSequence.toString()}
+          details="melhor sequência de pratos dentro da dieta"
+        />
+        <Card title={totalMeals.toString()} details="refeições registradas" />
         <ViewCardRow>
           <CardContainer>
-            <Card title="99" details="refeições dentro da dieta" type="PLUS" />
             <Card
-              title="10"
+              title={inDietMeals.toString()}
+              details="refeições dentro da dieta"
+              type="PLUS"
+            />
+            <Card
+              title={outOfDietMeals.toString()}
               details="refeições fora da dieta"
               type="SECONDARY"
             />

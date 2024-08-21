@@ -3,21 +3,25 @@ import styled, { css } from "styled-components/native";
 
 import { ArrowLeft } from "phosphor-react-native";
 
-export type IconButtonStyleProps = "PRIMARY" | "SECONDARY";
+type IconButtonStyleProps = "PRIMARY" | "SECONDARY";
 
 type Props = {
   type: IconButtonStyleProps;
 };
 
-export const Container = styled(SafeAreaView)`
+export const Container = styled(SafeAreaView)<Props>`
   flex: 1;
-  background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
+  background-color: ${({ type, theme }) =>
+    type === "PRIMARY" ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
 `;
 
-export const PercentView = styled.View`
+export const PercentView = styled.View<Props>`
   height: 20%;
   justify-content: center;
   align-items: center;
+
+  background-color: ${({ type, theme }) =>
+    type === "PRIMARY" ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
 `;
 
 export const ButtonIcon = styled.TouchableOpacity`

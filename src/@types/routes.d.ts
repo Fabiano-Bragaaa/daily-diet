@@ -8,7 +8,11 @@ export declare global {
       FinishCreate: undefined;
       FinishCreateNo: undefined;
       Details: {
-        percentage: string;
+        percentage: number;
+        maxSequence: number;
+        totalMeals: number;
+        inDietMeals: number;
+        outOfDietMeals: number;
       };
       MealDetails: { meal: Meal };
       MealEdit: { meal: Meal };
